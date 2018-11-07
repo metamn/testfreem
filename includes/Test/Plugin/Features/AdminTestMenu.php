@@ -42,8 +42,8 @@ if ( ! class_exists( 'Test_Plugin_Features_AdminTestMenu' ) ) {
 		 * @return void
 		 */
 		public function activate() {
-			add_action( 'admin_init', $this->add_menu_item() );
-			add_action( 'admin_init', $this->add_new_setting() );
+			$this->add_menu_item();
+			$this->add_new_setting();
 		}
 
 		/**
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Test_Plugin_Features_AdminTestMenu' ) ) {
 		 * @return void
 		 */
 		public function deactivate() {
-			add_action( 'admin_menu', $this->remove_menu_item() );
+			$this->remove_menu_item();
 		}
 
 		/**
@@ -82,8 +82,14 @@ if ( ! class_exists( 'Test_Plugin_Features_AdminTestMenu' ) ) {
 			remove_menu_page( 'wp_test_menu' );
 		}
 
+		/**
+		 * Adds a new setting.
+		 * 
+		 * @since 1.0.0
+		 * @return void
+		 */
 		public function add_new_setting() {
-			register_setting( 'wp_test_menu', 'wp_test_menu_list_setting' );
+			register_setting( 'wp_test_menu', 'wp_test_menu_settings' );
 
 			add_settings_section(
 				'wp_test_menu_settings_section',
@@ -105,23 +111,34 @@ if ( ! class_exists( 'Test_Plugin_Features_AdminTestMenu' ) ) {
 		 * Displays the content of the admin menu
 		 * 
 		 * @since 1.0.0
+		 * 
+		 * @link https://developer.wordpress.org/plugins/settings/custom-settings-page/
+		 * 
 		 * @return void
 		 */
 		public function display_menu_page() {
+			echo '<h2>WP Test Menu</h2>';
+
+			if ( isset( $_GET['settings-updated'] ) ) {
+				add_settings_error( 'wp_test_menu_messages', 'wp_test_menu_message', 'Settings saved', 'updated' );
+			}
+
+			settings_errors( 'wp_test_menu_messages' );
 			?>
+
 			<form action='options.php' method='post'>
-				<h2>WP Test Menu</h2>
 				<?php
 					settings_fields( 'wp_test_menu' );
 					do_settings_sections( 'wp_test_menu' );
-					submit_button();
+					submit_button( 'Save' );
 				?>
 			</form>
+			
 			<?php
 		}
 
 		public function display_menu_page_header() {
-			echo '<h1>WP Test Menu</h1>';
+			echo '<p>Select and item below and press Save</p>';
 		}
 
 		/**

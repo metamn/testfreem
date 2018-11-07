@@ -60,18 +60,9 @@ if ( ! class_exists( 'Test_Plugin_Setup' ) ) {
 			$this->setup_variables();
 			$this->setup_assets();
 
-			/**
-			 * `get_theme_features` must be called after `add_theme_support`.
-			 * Which is wrapped into a call like: `add_action( 'after_setup_theme', 'mo_pro_theme_define_theme_support', 10, 0 );`.
-			 * We attach the `get_theme_features` call into the same hook but with a lower priority.
-			 */
-			add_action( 'after_setup_theme', array( $this, 'get_theme_features' ), 11, 0 );
+			add_action( 'admin_init', array( $this, 'get_theme_features' ), 11, 0 );
 
-			/**
-			 * `activate_plugin` must be re-called after the theme features are set up for the plugin.
-			 * We attach the `activate_plugin` call into the same hook like the features setup but with a lower priority.
-			 */
-			add_action( 'after_setup_theme', array( $this, 'activate_plugin' ), 12, 0 );
+			add_action( 'admin_init', array( $this, 'activate_plugin' ), 12, 0 );
 		}
 
 

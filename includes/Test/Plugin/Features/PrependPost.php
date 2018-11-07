@@ -36,23 +36,41 @@ if ( ! class_exists( 'Test_Plugin_Features_PrependPost' ) ) {
 		}
 
 		/**
-		 * Activates the .
+		 * Activates the prepend.
 		 * 
 		 * @since 1.0.0
 		 * @return void
 		 */
 		public function activate() {
-			//
+			add_filter( 'the_title', array( $this, 'prepend_post' ) );
 		}
 
 		/**
-		 * Deactivates the admin menu.
+		 * Deactivates the prepend.
 		 * 
 		 * @since 1.0.0
 		 * @return void
 		 */
 		public function deactivate() {
-			//
+			remove_filter( 'the_title', array( $this, 'prepend_post' ) );
+		}
+
+		/** 
+		 * Prepends a post with a text.
+		 * 
+		 * @since 1.0.0
+		 * @param string $content The original post content
+		 * @return string The prepended content
+		 */
+		public function prepend_post( $content ) {
+			$prepend = '';
+			$options = get_option( 'wp_test_menu_settings' );
+
+			if ( isset( $options['wp_test_menu_settings_list_name'] ) ) {
+				$prepend = $options['wp_test_menu_settings_list_name'];
+			}
+
+			return $prepend . $content;
 		}
 	}
 } // End if().
