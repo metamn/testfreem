@@ -61,11 +61,11 @@ if ( ! class_exists( 'Test_Plugin_Features_Base' ) ) {
 				return;
 			}
 
-			if ( $this->features['prepend_post'] ) {
+			if ( in_array( 'prepend_post', $this->features ) ) {
 				$this->activate_prepend_post();
 			}
 
-			if ( $this->features['admin_test_menu'] ) {
+			if ( in_array( 'admin_test_menu', $this->features ) ) {
 				$this->activate_admin_test_menu();
 			}
 		}
@@ -86,11 +86,11 @@ if ( ! class_exists( 'Test_Plugin_Features_Base' ) ) {
 				return;
 			}
 
-			if ( $this->features['prepend_post'] ) {
+			if ( in_array( 'prepend_post', $this->features ) ) {
 				$this->deactivate_prepend_post();
 			}
 
-			if ( $this->features['admin_test_menu'] ) {
+			if ( in_array( 'admin_test_menu', $this->features ) ) {
 				$this->deactivate_admin_test_menu();
 			}
 		}

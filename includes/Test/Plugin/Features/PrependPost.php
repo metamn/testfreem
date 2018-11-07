@@ -34,5 +34,25 @@ if ( ! class_exists( 'Test_Plugin_Features_PrependPost' ) ) {
 		public function __construct( $arguments = array() ) {
 			$this->arguments = $this->array_merge( $this->arguments, $arguments );
 		}
+
+		/**
+		 * Activates the .
+		 * 
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function activate() {
+			//
+		}
+
+		/**
+		 * Deactivates the admin menu.
+		 * 
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function deactivate() {
+			//
+		}
 	}
 } // End if().
