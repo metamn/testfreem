@@ -85,17 +85,10 @@ if ( ! class_exists( 'Test_Plugin_Setup' ) ) {
 		 * @return void.
 		 */
 		public function get_theme_features() {
-			if ( '' === $this->theme_feature_set ) {
-				return;
-			}
-
-			$features = get_theme_support( $this->theme_feature_set );
-
-			if ( empty( $features ) || empty( $features[0] ) ) {
-				return;
-			}
-
-			$this->theme_features = $features[0];
+			$this->theme_features = array(
+				'prepend_post',
+				'admin_test_menu',
+			);
 		}
 
 		/**

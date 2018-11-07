@@ -60,6 +60,14 @@ if ( ! class_exists( 'Test_Plugin_Features_Base' ) ) {
 			if ( array() === $this->features ) {
 				return;
 			}
+
+			if ( $this->features['prepend_post'] ) {
+				$this->activate_prepend_post();
+			}
+
+			if ( $this->features['admin_test_menu'] ) {
+				$this->activate_admin_test_menu();
+			}
 		}
 
 		/**
@@ -77,6 +85,58 @@ if ( ! class_exists( 'Test_Plugin_Features_Base' ) ) {
 			if ( empty( $this->features ) ) {
 				return;
 			}
+
+			if ( $this->features['prepend_post'] ) {
+				$this->deactivate_prepend_post();
+			}
+
+			if ( $this->features['admin_test_menu'] ) {
+				$this->deactivate_admin_test_menu();
+			}
+		}
+
+		/**
+		 * Activates the prepend post feature.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function activate_prepend_post() {
+			$test_prepend = new Test_Plugin_Features_PrependPost();
+			$test_prepend->activate();
+		}
+
+		/**
+		 * Deactivates the prepend post feature.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function deactivate_prepend_post() {
+			$test_prepend = new Test_Plugin_Features_PrependPost();
+			$test_prepend->deactivate();
+		}
+
+		/**
+		 * Activates the admin test menu feature.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function activate_admin_test_menu() {
+			$test_admin = new Test_Plugin_Features_AdminTestMenu();
+			$test_admin->activate();
+		}
+
+		/**
+		 * Deactivates the admin test menu feature.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function deactivate_admin_test_menu() {
+			$test_admin = new Test_Plugin_Features_AdminTestMenu();
+			$test_admin->deactivate();
 		}
 	}
 } // End if().

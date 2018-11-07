@@ -6,10 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Mo_Plugin_Features_CustomPostType' => $baseDir . '/includes/Test/Plugin/Features/CustomPostType.php',
-    'Mo_Plugin_Features_CustomShortcode' => $baseDir . '/includes/Test/Plugin/Features/CustomShortcode.php',
     'Test_Assets' => $baseDir . '/includes/Test/Plugin/Assets.php',
     'Test_Base' => $baseDir . '/includes/Test/Plugin/Base.php',
+    'Test_Plugin_Features_AdminTestMenu' => $baseDir . '/includes/Test/Plugin/Features/AdminTestMenu.php',
     'Test_Plugin_Features_Base' => $baseDir . '/includes/Test/Plugin/Features/Base.php',
+    'Test_Plugin_Features_PrependPost' => $baseDir . '/includes/Test/Plugin/Features/PrependPost.php',
     'Test_Plugin_Setup' => $baseDir . '/includes/Test/Plugin/Setup.php',
 );

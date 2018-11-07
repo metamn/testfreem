@@ -7,11 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit50230e4ade35b5e71c764727b95e2dd2
 {
     public static $classMap = array (
-        'Mo_Plugin_Features_CustomPostType' => __DIR__ . '/../..' . '/includes/Test/Plugin/Features/CustomPostType.php',
-        'Mo_Plugin_Features_CustomShortcode' => __DIR__ . '/../..' . '/includes/Test/Plugin/Features/CustomShortcode.php',
         'Test_Assets' => __DIR__ . '/../..' . '/includes/Test/Plugin/Assets.php',
         'Test_Base' => __DIR__ . '/../..' . '/includes/Test/Plugin/Base.php',
+        'Test_Plugin_Features_AdminTestMenu' => __DIR__ . '/../..' . '/includes/Test/Plugin/Features/AdminTestMenu.php',
         'Test_Plugin_Features_Base' => __DIR__ . '/../..' . '/includes/Test/Plugin/Features/Base.php',
+        'Test_Plugin_Features_PrependPost' => __DIR__ . '/../..' . '/includes/Test/Plugin/Features/PrependPost.php',
         'Test_Plugin_Setup' => __DIR__ . '/../..' . '/includes/Test/Plugin/Setup.php',
     );
 
